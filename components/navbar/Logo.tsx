@@ -1,9 +1,19 @@
-import React from 'react'
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { SiPrestashop } from 'react-icons/si'
 
-export default function Logo() {
+function Logo() {
   return (
-    <div>
-      
-    </div>
+    <Button
+      size='icon'
+      variant='ghost'
+      asChild
+    >
+      <Link href='/'>
+        <SiPrestashop className='w-20 h-20' />
+      </Link>
+    </Button>
   )
 }
+
+export default Logo
