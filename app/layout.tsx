@@ -5,6 +5,8 @@ import './globals.css'
 import Navbar from '../components/navbar/Navbar'
 import Container from '../components/global/Container'
 
+import Providers from './providers'
+
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -31,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <Container className='pb-20'>{children}</Container>
+        <Providers>
+          <Navbar />
+          <Container className='pb-20'>{children}</Container>
+        </Providers>
       </body>
     </html>
   )
