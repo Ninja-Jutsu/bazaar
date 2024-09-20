@@ -28,6 +28,7 @@ function ProductsGrid({ products }: { products: Product[] }) {
                       sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
                       priority
                       className='rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500'
+                      loading='lazy'
                     />
                   </div>
                   <div className='mt-4 text-center'>
