@@ -1,17 +1,12 @@
-import { Button } from '@/components/ui/button'
-import React from 'react'
+import FeaturedProducts from '@/components/home/FeaturedProducts';
+import Hero from '@/components/home/Hero';
 
-function HomePage() {
+function HomPage() {
   return (
-    <div>
-      <Button
-        size={'lg'}
-        variant={'outline'}
-      >
-        Click me
-      </Button>
-    </div>
-  )
+    <>
+      <Hero />
+      <FeaturedProducts />
+    </>
+  );
 }
-
-export default HomePage
+export default HomPage;
