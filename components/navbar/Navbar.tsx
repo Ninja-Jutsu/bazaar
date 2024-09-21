@@ -4,13 +4,15 @@ import DarkMode from './DarkMode'
 import CartButton from './CartButton'
 import NavSearch from './NavSearch'
 import Container from '../global/Container'
+import { fetchAllProducts } from '@/utils/actions'
 
-function Navbar() {
+async function Navbar() {
+  const products = await fetchAllProducts()
   return (
     <nav className='border-b '>
       <Container className='flex flex-col sm:flex-row  sm:justify-between sm:items-center flex-wrap gap-4 py-8'>
         <Logo />
-        <NavSearch />
+        <NavSearch products={products} />
         <div className='flex gap-4 items-center '>
           <CartButton />
           <DarkMode />

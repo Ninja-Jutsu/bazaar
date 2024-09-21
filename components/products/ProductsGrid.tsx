@@ -1,14 +1,17 @@
+'use client'
 import { Product } from '@prisma/client'
 import { formatCurrency } from '@/utils/format'
 import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
 import Image from 'next/image'
 import FavoriteToggleButton from './FavoriteToggleButton'
+import { useProductContext } from '../contexts/ProductContext'
 
-function ProductsGrid({ products }: { products: Product[] }) {
+function ProductsGrid() {
+  const { displayedProducts } = useProductContext()
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-      {products.map((product) => {
+      {displayedProducts.map((product: Product) => {
         const { name, price, image } = product
         const productId = product.id
         const dollarsAmount = formatCurrency(price)

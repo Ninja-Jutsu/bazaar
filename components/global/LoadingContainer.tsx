@@ -8,6 +8,9 @@ function LoadingContainer() {
       <LoadingProduct />
       <LoadingProduct />
       <LoadingProduct />
+      <LoadingProduct />
+      <LoadingProduct />
+      <LoadingProduct />
     </div>
   )
 }

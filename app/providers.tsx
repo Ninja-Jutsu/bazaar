@@ -1,5 +1,6 @@
 'use client'
 import { ThemeProvider } from '@/components/theme-provider'
+import ProductProvider from '@/components/contexts/ProductContext'
 
 function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -9,7 +10,7 @@ function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-      {children}
+      <ProductProvider>{children}</ProductProvider>
     </ThemeProvider>
   )
 }

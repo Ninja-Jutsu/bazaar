@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { fetchAllProducts } from '@/utils/actions'
 import Link from 'next/link'
+import SectionTitle from '../global/SectionTitle'
 
 async function ProductsContainer({
   layout,
@@ -18,12 +19,13 @@ async function ProductsContainer({
   const searchTerm = search ? `&search=${search}` : ''
   return (
     <>
-      {/* HEADER */}
       <section>
         <div className='flex justify-between items-center'>
-          <h4 className='font-medium text-lg'>
-            {totalProducts} product{totalProducts > 1 && 's'}
-          </h4>
+          <SectionTitle
+            text={`${totalProducts} product${totalProducts > 1 && 's'}`}
+            moreStyles='font-medium text-lg'
+            useSeparator={false}
+          />
           <div className='flex gap-x-4'>
             <Button
               variant={layout === 'grid' ? 'default' : 'ghost'}
@@ -50,11 +52,11 @@ async function ProductsContainer({
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
+          <h5 className='text-2xl mt-16 '>
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
-          <ProductsGrid products={products} />
+          <ProductsGrid />
         ) : (
           <ProductsList products={products} />
         )}
