@@ -65,7 +65,7 @@ const benefits: Benefits[] = [
   },
 ]
 
-function Paragraph({ text }) {
+function Paragraph({ text }: {text: string}) {
   return (
     <p className='mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground'>
       {text}
