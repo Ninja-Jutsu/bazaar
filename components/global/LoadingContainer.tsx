@@ -1,21 +1,14 @@
-import { Skeleton } from '../ui/skeleton'
-import { Card, CardContent } from '../ui/card'
-import SectionTitle from './SectionTitle'
 import { Redacted_Script } from 'next/font/google'
+import { Card, CardContent } from '../ui/card'
+import { Skeleton } from '../ui/skeleton'
 const redacted = Redacted_Script({ subsets: ['latin'], weight: ['400'] })
 function LoadingContainer() {
   return (
-    <section className='pt-24'>
-      <SectionTitle
-        text='featured products'
-        // moreStyles={redacted.className}
-      />
-      <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-        <LoadingProduct />
-        <LoadingProduct />
-        <LoadingProduct />
-      </div>
-    </section>
+    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+      <LoadingProduct />
+      <LoadingProduct />
+      <LoadingProduct />
+    </div>
   )
 }
 

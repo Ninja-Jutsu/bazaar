@@ -3,6 +3,7 @@ import delay from 'delay'
 
 export const fetchFeaturedProducts = async () => {
   await delay(2000)
+
   const products = await prisma.product.findMany({
     where: {
       featured: true,
@@ -11,7 +12,9 @@ export const fetchFeaturedProducts = async () => {
   return products
 }
 
-export const fetchAllProducts = () => {
+export const fetchAllProducts = async () => {
+  await delay(2000)
+
   return prisma.product.findMany({
     orderBy: {
       createdAt: 'desc',
