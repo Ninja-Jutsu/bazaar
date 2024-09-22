@@ -6,9 +6,17 @@ import Link from 'next/link'
 import Image from 'next/image'
 import FavoriteToggleButton from './FavoriteToggleButton'
 import { useProductContext } from '../contexts/ProductContext'
+import React from 'react'
 
 function ProductsGrid() {
   const { displayedProducts } = useProductContext()
+  if (displayedProducts.length === 0) {
+    return (
+      <h5 className='text-2xl mt-16 '>
+        Sorry, no products matched your search...
+      </h5>
+    )
+  }
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {displayedProducts.map((product: Product) => {

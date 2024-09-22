@@ -3,10 +3,8 @@ import LoadingContainer from '@/components/global/LoadingContainer'
 import SectionTitle from '@/components/global/SectionTitle'
 import { Button } from '@/components/ui/button'
 import { LuLayoutGrid, LuList } from 'react-icons/lu'
-import { Redacted_Script } from 'next/font/google'
 import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
-const redacted = Redacted_Script({ subsets: ['latin'], weight: ['400'] })
 
 export default function Loading() {
   return <LoadingProducts />

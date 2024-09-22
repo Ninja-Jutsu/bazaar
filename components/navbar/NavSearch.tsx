@@ -16,19 +16,18 @@ function NavSearch({ products }: { products: Product[] }) {
 
   // Show filtered products onChange with a delay
   useEffect(() => {
-    if (searchValue) {
+    if (searchValue.length > 0) {
       const delaySearch = setTimeout(() => {
-        const filterProducts = displayedProducts.filter(
-          (product) =>
-            product.description
-              .toLowerCase()
-              .includes(searchValue.toLowerCase()) ||
-            product.name.toLowerCase().includes(searchValue.toLowerCase())
+        setDisplayedProducts(products)
+        const filterByName = displayedProducts.filter((product) =>
+          product.name.toLowerCase().includes(searchValue.toLowerCase())
         )
-        setDisplayedProducts(filterProducts)
-        console.log(filterProducts)
+        console.log(filterByName)
+        setDisplayedProducts([...filterByName])
       }, 300)
       return () => clearTimeout(delaySearch)
+    } else {
+      setDisplayedProducts(products)
     }
   }, [searchValue])
   return (
@@ -38,7 +37,6 @@ function NavSearch({ products }: { products: Product[] }) {
       className='max-w-xs dark:bg-muted '
       value={searchValue}
       onChange={(e) => {
-        setDisplayedProducts(products)
         setSearchValue(e.target.value)
       }}
     />
