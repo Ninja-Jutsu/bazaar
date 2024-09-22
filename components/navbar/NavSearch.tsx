@@ -19,10 +19,18 @@ function NavSearch({ products }: { products: Product[] }) {
     if (searchValue.length > 0) {
       const delaySearch = setTimeout(() => {
         setDisplayedProducts(products)
-        const filterByName = displayedProducts.filter((product) =>
-          product.name.toLowerCase().includes(searchValue.toLowerCase())
+        const filterByName = displayedProducts.filter(
+          (product) =>
+            normalizeString(product.name).includes(
+              normalizeString(searchValue)
+            ) ||
+            normalizeString(product.company).includes(
+              normalizeString(searchValue)
+            ) ||
+            normalizeString(product.description).includes(
+              normalizeString(searchValue)
+            )
         )
-        console.log(filterByName)
         setDisplayedProducts([...filterByName])
       }, 300)
       return () => clearTimeout(delaySearch)
@@ -43,3 +51,7 @@ function NavSearch({ products }: { products: Product[] }) {
   )
 }
 export default NavSearch
+
+function normalizeString(string: string) {
+  return string.trim().toLowerCase()
+}

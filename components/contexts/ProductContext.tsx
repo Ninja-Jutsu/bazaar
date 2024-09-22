@@ -22,7 +22,6 @@ export default function ProductProvider({
   children: React.ReactNode
 }) {
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
-  console.log(displayedProducts)
   return (
     <ProductContext.Provider
       value={{ displayedProducts, setDisplayedProducts }}
