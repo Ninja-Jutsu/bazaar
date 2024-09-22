@@ -11,7 +11,7 @@ function NavSearch({ products }: { products: Product[] }) {
 
   // Show all products at the first render
   useEffect(() => {
-    setDisplayedProducts(products)
+    setDisplayedProducts(products.sort((a, b) => a.price - b.price))
   }, [])
 
   // Show filtered products onChange with a delay
@@ -19,23 +19,25 @@ function NavSearch({ products }: { products: Product[] }) {
     if (searchValue.length > 0) {
       const delaySearch = setTimeout(() => {
         setDisplayedProducts(products)
-        const filterByName = displayedProducts.filter(
-          (product) =>
-            normalizeString(product.name).includes(
-              normalizeString(searchValue)
-            ) ||
-            normalizeString(product.company).includes(
-              normalizeString(searchValue)
-            ) ||
-            normalizeString(product.description).includes(
-              normalizeString(searchValue)
-            )
-        )
-        setDisplayedProducts([...filterByName])
+        const filteredList = displayedProducts
+          .filter(
+            (product) =>
+              normalizeString(product.name).includes(
+                normalizeString(searchValue)
+              ) ||
+              normalizeString(product.company).includes(
+                normalizeString(searchValue)
+              ) ||
+              normalizeString(product.description).includes(
+                normalizeString(searchValue)
+              )
+          )
+          
+        setDisplayedProducts([...filteredList])
       }, 300)
       return () => clearTimeout(delaySearch)
     } else {
-      setDisplayedProducts(products)
+      setDisplayedProducts(products.sort((a, b) => a.price - b.price))
     }
   }, [searchValue])
   return (
