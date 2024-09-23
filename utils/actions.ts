@@ -5,7 +5,7 @@ import delay from 'delay'
 import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
-import { productSchema, validateWithZodSchema } from './schemas'
+import { imageSchema, productSchema, validateWithZodSchema } from './schemas'
 
 function renderError(error: unknown): { message: string } {
   console.log(error)
@@ -59,7 +59,12 @@ export const createProductAction = async (
   const user = await getCurrentUser()
   try {
     const rawData = Object.fromEntries(formData)
+    const file = formData.get('image') as File
+    // Validate data
     const validatedFields = validateWithZodSchema(productSchema, rawData)
+    // Validate Image File
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file })
+    console.log(validatedFile)
     await prisma.product.create({
       data: {
         ...validatedFields,
