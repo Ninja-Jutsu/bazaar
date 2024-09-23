@@ -1,17 +1,14 @@
 'use client'
-import { Product } from '@prisma/client'
-import { formatCurrency } from '@/utils/format'
 import { Card, CardContent } from '@/components/ui/card'
-import Link from 'next/link'
+import { formatCurrency } from '@/utils/format'
+import { Product } from '@prisma/client'
 import Image from 'next/image'
-import FavoriteToggleButton from './FavoriteToggleButton'
+import Link from 'next/link'
 import { useProductContext } from '../contexts/ProductContext'
-import React from 'react'
+import FavoriteToggleButton from './FavoriteToggleButton'
 
-function ProductsGrid({ featuredProducts }: { featuredProducts?: Product[] }) {
+function ProductsGrid() {
   const { displayedProducts } = useProductContext()
-
-  const toShowProducts = featuredProducts || displayedProducts
   if (displayedProducts.length === 0) {
     return (
       <h5 className='text-2xl mt-16 '>
@@ -19,10 +16,9 @@ function ProductsGrid({ featuredProducts }: { featuredProducts?: Product[] }) {
       </h5>
     )
   }
-
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-      {toShowProducts.map((product: Product) => {
+      {displayedProducts.map((product: Product) => {
         const { name, price, image } = product
         const productId = product.id
         const dollarsAmount = formatCurrency(price)
