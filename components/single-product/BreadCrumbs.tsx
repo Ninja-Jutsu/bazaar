@@ -9,7 +9,7 @@ import {
 
 function BreadCrumbs({ name }: { name: string }) {
   return (
-    <Breadcrumb>
+    <Breadcrumb className='mt-5'>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink

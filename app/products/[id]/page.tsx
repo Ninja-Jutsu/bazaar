@@ -13,7 +13,7 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
   return (
     <section>
       <BreadCrumbs name={product.name} />
-      <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
+      <div className='mt-6 grid gap-y-4 lg:grid-cols-2 lg:gap-x-8'>
         {/* IMAGE FIRST COL */}
         <div className='relative h-full'>
           <Image
@@ -26,16 +26,35 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
           />
         </div>
         {/* PRODUCT INFO SECOND COL */}
-        <div>
-          <div className='flex gap-x-8 items-center'>
-            <h1 className='capitalize text-3xl font-bold'>{name}</h1>
-            <FavoriteToggleButton productId={params.id} />
+        <div className='w-full'>
+          {/* For small screens */}
+          <div className='mb-10 lg:hidden'>
+            <Image
+              src={image}
+              alt={name}
+              width={100}
+              height={100}
+              priority
+              sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
+              className='w-full rounded-md object-cover'
+            />
           </div>
-          <ProductRating productId={params.id} />
-          <h4 className='text-xl mt-2'>{company}</h4>
-          <p className='mt-3 text-md bg-muted inline-block p-2 rounded-md'>
-            {dollarsAmount}
-          </p>
+          <div className='w-full'>
+            <div className='flex gap-x-8 items-center'>
+              <div className='w-full flex justify-between'>
+                <h1 className='capitalize text-2xl lg:text-3xl font-bold'>
+                  {name}
+                </h1>
+                <FavoriteToggleButton productId={params.id} />
+              </div>
+            </div>
+            <ProductRating productId={params.id} />
+            <h4 className='lg:text-xl mt-2 italic'>{company}</h4>
+            <p className='mt-3 text-sm lg:text-md bg-muted inline-block p-2 rounded-md'>
+              {dollarsAmount}
+            </p>
+          </div>
+
           <p className='mt-6 leading-8 text-muted-foreground'>{description}</p>
           <AddToCart productId={params.id} />
         </div>

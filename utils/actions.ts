@@ -5,7 +5,7 @@ import delay from 'delay'
 import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
-import { useProductContext } from '@/components/contexts/ProductContext'
+import { productSchema, validateWithZodSchema } from './schemas'
 
 function renderError(error: unknown): { message: string } {
   console.log(error)
@@ -58,28 +58,19 @@ export const createProductAction = async (
 ): Promise<{ message: string }> => {
   const user = await getCurrentUser()
   try {
-    const name = formData.get('name') as string
-    const company = formData.get('company') as string
-    const price = Number(formData.get('price') as string)
-    const image = formData.get('image') as File
-    const description = formData.get('description') as string
-    const featured = Boolean(formData.get('featured') as string)
-    console.log(featured)
+    const rawData = Object.fromEntries(formData)
+    const validatedFields = validateWithZodSchema(productSchema, rawData)
     await prisma.product.create({
       data: {
-        name,
-        company,
-        price,
+        ...validatedFields,
         image: '/images/product-1.jpg',
-        description,
-        featured,
         clerkId: user.id,
       },
     })
-
     revalidatePath('/', 'layout')
     return { message: 'product created' }
   } catch (error) {
+    console.log(error)
     return renderError(error)
   }
 }
