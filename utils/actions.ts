@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+'use server'
 import prisma from '@/prisma/prismaClient'
 import delay from 'delay'
 import { redirect } from 'next/navigation'
@@ -29,4 +31,11 @@ export const fetchSingleProduct = async (productId: string) => {
     redirect('/products')
   }
   return product
+}
+
+export const createProductAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  return { message: 'product created' }
 }
