@@ -8,8 +8,10 @@ import FavoriteToggleButton from './FavoriteToggleButton'
 import { useProductContext } from '../contexts/ProductContext'
 import React from 'react'
 
-function ProductsGrid() {
+function ProductsGrid({ featuredProducts }: { featuredProducts?: Product[] }) {
   const { displayedProducts } = useProductContext()
+
+  const toShowProducts = featuredProducts || displayedProducts
   if (displayedProducts.length === 0) {
     return (
       <h5 className='text-2xl mt-16 '>
@@ -17,9 +19,10 @@ function ProductsGrid() {
       </h5>
     )
   }
+
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-      {displayedProducts.map((product: Product) => {
+      {toShowProducts.map((product: Product) => {
         const { name, price, image } = product
         const productId = product.id
         const dollarsAmount = formatCurrency(price)
