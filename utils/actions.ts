@@ -3,6 +3,25 @@
 import prisma from '@/prisma/prismaClient'
 import delay from 'delay'
 import { redirect } from 'next/navigation'
+import { auth, currentUser } from '@clerk/nextjs/server'
+import { revalidatePath } from 'next/cache'
+import { useProductContext } from '@/components/contexts/ProductContext'
+
+function renderError(error: unknown): { message: string } {
+  console.log(error)
+  return {
+    message: error instanceof Error ? error.message : 'An error occurred',
+  }
+}
+
+// Even though we know for sure that the route is protected, TypeScript doesn't
+const getCurrentUser = async () => {
+  const user = await currentUser()
+  if (!user) {
+    throw new Error('You must be logged in to access this route')
+  }
+  return user
+}
 
 export const fetchFeaturedProducts = async () => {
   const products = await prisma.product.findMany({
@@ -37,5 +56,30 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  return { message: 'product created' }
+  const user = await getCurrentUser()
+  try {
+    const name = formData.get('name') as string
+    const company = formData.get('company') as string
+    const price = Number(formData.get('price') as string)
+    const image = formData.get('image') as File
+    const description = formData.get('description') as string
+    const featured = Boolean(formData.get('featured') as string)
+    console.log(featured)
+    await prisma.product.create({
+      data: {
+        name,
+        company,
+        price,
+        image: '/images/product-1.jpg',
+        description,
+        featured,
+        clerkId: user.id,
+      },
+    })
+
+    revalidatePath('/', 'layout')
+    return { message: 'product created' }
+  } catch (error) {
+    return renderError(error)
+  }
 }
