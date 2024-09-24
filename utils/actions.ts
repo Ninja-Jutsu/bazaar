@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
 import { imageSchema, productSchema, validateWithZodSchema } from './schemas'
-import { uploadImage } from './supabase'
+import { deleteImage, uploadImage } from './supabase'
 
 function renderError(error: unknown): { message: string } {
   console.log(error)
@@ -79,7 +79,7 @@ export const createProductAction = async (
     console.log(error)
     return renderError(error)
   }
-  
+
   //I could choose to redirect the Admin to the products page
   redirect('/admin/products')
 }
@@ -106,17 +106,40 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
   await getAdminUser()
 
   try {
-    await prisma.product.delete({
+    const product = await prisma.product.delete({
       where: {
         id: productId,
       },
     })
-
+    await deleteImage(product.image)
     revalidatePath('/admin/products')
 
-    //! revalidate is interfering with the state in the component
     return { message: 'product removed' }
   } catch (error) {
     return renderError(error)
   }
+}
+
+export const fetchAdminProductDetails = async (productId: string) => {
+  await getAdminUser()
+  const product = await prisma.product.findUnique({
+    where: {
+      id: productId,
+    },
+  })
+  if (!product) redirect('/admin/products')
+  return product
+}
+
+export const updateProductAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  return { message: 'Product updated successfully' }
+}
+export const updateProductImageAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  return { message: 'Product Image updated successfully' }
 }
