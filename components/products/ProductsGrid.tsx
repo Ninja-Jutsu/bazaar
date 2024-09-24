@@ -1,24 +1,14 @@
-'use client'
-import { Card, CardContent } from '@/components/ui/card'
-import { formatCurrency } from '@/utils/format'
 import { Product } from '@prisma/client'
-import Image from 'next/image'
+import { formatCurrency } from '@/utils/format'
+import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
-import { useProductContext } from '../contexts/ProductContext'
+import Image from 'next/image'
 import FavoriteToggleButton from './FavoriteToggleButton'
 
-function ProductsGrid() {
-  const { displayedProducts } = useProductContext()
-  if (displayedProducts.length === 0) {
-    return (
-      <h5 className='text-2xl mt-16 '>
-        Sorry, no products matched your search...
-      </h5>
-    )
-  }
+function ProductsGrid({ products }: { products: Product[] }) {
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
-      {displayedProducts.map((product: Product) => {
+      {products.map((product) => {
         const { name, price, image } = product
         const productId = product.id
         const dollarsAmount = formatCurrency(price)

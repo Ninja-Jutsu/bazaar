@@ -1,60 +1,41 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { Input } from '../ui/input'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useDebouncedCallback } from 'use-debounce'
 import { useState, useEffect } from 'react'
-import { Product } from '@prisma/client'
-import { useProductContext } from '../contexts/ProductContext'
 
-function NavSearch({ products }: { products: Product[] }) {
-  const [searchValue, setSearchValue] = useState('')
-  const { displayedProducts, setDisplayedProducts } = useProductContext()
-
-  // Show all products at the first render
-  useEffect(() => {
-    setDisplayedProducts(products.sort((a, b) => a.price - b.price))
-  }, [])
-
-  // Show filtered products onChange with a delay
-  useEffect(() => {
-    if (searchValue.length > 0) {
-      const delaySearch = setTimeout(() => {
-        setDisplayedProducts(products)
-        const filteredList = displayedProducts
-          .filter(
-            (product) =>
-              normalizeString(product.name).includes(
-                normalizeString(searchValue)
-              ) ||
-              normalizeString(product.company).includes(
-                normalizeString(searchValue)
-              ) ||
-              normalizeString(product.description).includes(
-                normalizeString(searchValue)
-              )
-          )
-          
-        setDisplayedProducts([...filteredList])
-      }, 300)
-      return () => clearTimeout(delaySearch)
+function NavSearch() {
+  const searchParams = useSearchParams()
+  const { replace } = useRouter()
+  const [search, setSearch] = useState(
+    searchParams.get('search')?.toString() || ''
+  )
+  const handleSearch = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams)
+    if (value) {
+      params.set('search', value)
     } else {
-      setDisplayedProducts(products.sort((a, b) => a.price - b.price))
+      params.delete('search')
     }
-  }, [searchValue])
+    replace(`/products?${params.toString()}`)
+  }, 300)
+
+  useEffect(() => {
+    if (!searchParams.get('search')) {
+      setSearch('')
+    }
+  }, [searchParams.get('search')])
   return (
     <Input
       type='search'
       placeholder='search product...'
       className='max-w-xs dark:bg-muted '
-      value={searchValue}
       onChange={(e) => {
-        setSearchValue(e.target.value)
+        setSearch(e.target.value)
+        handleSearch(e.target.value)
       }}
+      value={search}
     />
   )
 }
 export default NavSearch
-
-function normalizeString(string: string) {
-  return string.trim().toLowerCase()
-}

@@ -19,8 +19,14 @@ function renderError(error: unknown): { message: string } {
 const getCurrentUser = async () => {
   const user = await currentUser()
   if (!user) {
-    throw new Error('You must be logged in to access this route')
+    redirect('/')
   }
+  return user
+}
+
+const getAdminUser = async () => {
+  const user = await getCurrentUser()
+  if (user.id !== process.env.ADMIN_USER_ID) redirect('/')
   return user
 }
 
@@ -33,8 +39,14 @@ export const fetchFeaturedProducts = async () => {
   return products
 }
 
-export const fetchAllProducts = async () => {
+export const fetchAllProducts = ({ search = '' }: { search: string }) => {
   return prisma.product.findMany({
+    where: {
+      OR: [
+        { name: { contains: search, mode: 'insensitive' } },
+        { company: { contains: search, mode: 'insensitive' } },
+      ],
+    },
     orderBy: {
       createdAt: 'desc',
     },
@@ -84,11 +96,6 @@ export const createProductAction = async (
   redirect('/admin/products')
 }
 
-const getAdminUser = async () => {
-  const user = await getCurrentUser()
-  if (user.id !== process.env.ADMIN_USER_ID) redirect('/')
-  return user
-}
 // refactor createProductAction
 
 export const fetchAdminProducts = async () => {
