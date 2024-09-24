@@ -74,10 +74,13 @@ export const createProductAction = async (
       },
     })
     revalidatePath('/', 'layout')
+    return { message: 'product created' }
   } catch (error) {
     console.log(error)
     return renderError(error)
   }
+  
+  //I could choose to redirect the Admin to the products page
   redirect('/admin/products')
 }
 
@@ -110,6 +113,8 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
     })
 
     revalidatePath('/admin/products')
+
+    //! revalidate is interfering with the state in the component
     return { message: 'product removed' }
   } catch (error) {
     return renderError(error)
