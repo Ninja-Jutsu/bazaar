@@ -20,7 +20,7 @@ function ImageInputContainer(props: ImageInputContainerProps) {
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false)
 
   return (
-    <div className='mb-8'>
+    <div className='mb-8 flex justify-start gap-4'>
       <Image
         src={image}
         width={200}
@@ -29,22 +29,28 @@ function ImageInputContainer(props: ImageInputContainerProps) {
         alt={name}
       />
 
-      <Button
-        variant='outline'
-        size='sm'
-        onClick={() => setUpdateFormVisible((prev) => !prev)}
-      >
-        {text}
-      </Button>
-      {isUpdateFormVisible && (
-        <div className='max-w-md mt-4'>
-          <FormContainer action={action}>
-            {props.children}
-            <ImageInput />
-            <SubmitButton size='sm' />
-          </FormContainer>
-        </div>
-      )}
+      <div className='flex flex-col justify-center'>
+        <Button
+          variant='outline'
+          size='default'
+          onClick={() => setUpdateFormVisible((prev) => !prev)}
+          className='capitalize self-start'
+        >
+          {text}
+        </Button>
+        {isUpdateFormVisible && (
+          <div className='max-w-md mt-4 items-stretch'>
+            <FormContainer
+              action={action}
+              classNames='flex items-center gap-x-2'
+            >
+              {props.children}
+              <ImageInput />
+              <SubmitButton size='sm' />
+            </FormContainer>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

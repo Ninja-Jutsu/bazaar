@@ -3,10 +3,10 @@ import { Input } from '../ui/input'
 
 function ImageInput() {
   return (
-    <div className='mb-2'>
+    <div>
       <Label
         htmlFor='image'
-        className='capitalize'
+        className='capitalize lg:hidden'
       >
         Image
       </Label>
@@ -16,6 +16,7 @@ function ImageInput() {
         type='file'
         required
         accept='image/*'
+        className='text-center text-xl w-[250px] '
       />
     </div>
   )

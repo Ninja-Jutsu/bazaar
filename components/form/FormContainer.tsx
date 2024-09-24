@@ -12,9 +12,11 @@ const initialState = {
 function FormContainer({
   action,
   children,
+  classNames,
 }: {
   action: actionFunction
   children: React.ReactNode
+  classNames?: string
 }) {
   const [state, formAction] = useFormState(action, initialState)
   const { toast } = useToast()
@@ -24,6 +26,13 @@ function FormContainer({
       toast({ description: state.message })
     }
   }, [state, toast])
-  return <form action={formAction}>{children}</form>
+  return (
+    <form
+      className={classNames}
+      action={formAction}
+    >
+      {children}
+    </form>
+  )
 }
 export default FormContainer

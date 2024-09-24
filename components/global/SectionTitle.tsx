@@ -13,7 +13,7 @@ function SectionTitle({
     <div>
       <h2
         className={cn(
-          'text-3xl font-medium tracking-wider capitalize mt-8',
+          'text-3xl font-medium tracking-wider capitalize my-4',
           moreStyles
         )}
       >
