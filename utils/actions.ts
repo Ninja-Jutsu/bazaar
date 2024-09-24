@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache'
 import { imageSchema, productSchema, validateWithZodSchema } from './schemas'
+import { uploadImage } from './supabase'
 
 function renderError(error: unknown): { message: string } {
   console.log(error)
@@ -64,11 +65,11 @@ export const createProductAction = async (
     const validatedFields = validateWithZodSchema(productSchema, rawData)
     // Validate Image File
     const validatedFile = validateWithZodSchema(imageSchema, { image: file })
-    console.log(validatedFile)
+    const imageFullPath = await uploadImage(validatedFile.image)
     await prisma.product.create({
       data: {
         ...validatedFields,
-        image: '/images/product-1.jpg',
+        image: imageFullPath,
         clerkId: user.id,
       },
     })
