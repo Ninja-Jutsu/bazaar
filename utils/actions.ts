@@ -156,7 +156,6 @@ export const updateProductAction = async (
   }
 }
 
-
 export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
@@ -180,6 +179,51 @@ export const updateProductImageAction = async (
     })
     revalidatePath(`/admin/products/${productId}/edit`)
     return { message: 'Product Image updated successfully' }
+  } catch (error) {
+    return renderError(error)
+  }
+}
+
+export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
+  const user = await getCurrentUser()
+  const favorite = await prisma.favorite.findFirst({
+    where: {
+      productId,
+      clerkId: user.id,
+    },
+    select: {
+      id: true,
+    },
+  })
+  return favorite?.id || null
+}
+
+export const toggleFavoriteAction = async (prevState: {
+  productId: string
+  favoriteId: string | null
+  pathname: string
+}) => {
+  const user = await getCurrentUser()
+  const { productId, favoriteId, pathname } = prevState
+  try {
+    if (favoriteId) {
+      await prisma.favorite.delete({
+        where: {
+          id: favoriteId,
+        },
+      })
+    } else {
+      await prisma.favorite.create({
+        data: {
+          productId,
+          clerkId: user.id,
+        },
+      })
+    }
+    revalidatePath(pathname)
+    return {
+      message: favoriteId ? 'Removed from favorites' : 'Added to favorites',
+    }
   } catch (error) {
     return renderError(error)
   }
