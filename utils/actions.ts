@@ -74,9 +74,9 @@ export const createProductAction = async (
       },
     })
     revalidatePath('/', 'layout')
-    return { message: 'product created' }
   } catch (error) {
     console.log(error)
     return renderError(error)
   }
+  redirect('/admin/products')
 }
