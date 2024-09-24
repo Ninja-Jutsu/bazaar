@@ -80,3 +80,20 @@ export const createProductAction = async (
   }
   redirect('/admin/products')
 }
+
+const getAdminUser = async () => {
+  const user = await getCurrentUser()
+  if (user.id !== process.env.ADMIN_USER_ID) redirect('/')
+  return user
+}
+// refactor createProductAction
+
+export const fetchAdminProducts = async () => {
+  await getAdminUser()
+  const products = await prisma.product.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  })
+  return products
+}
