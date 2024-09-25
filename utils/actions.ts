@@ -590,11 +590,23 @@ export const removeCartItemAction = async (
 // Orders:
 export const createOrderAction = async (prevState: any, formData: FormData) => {
   const user = await getCurrentUser()
+  let orderId: null | string = null
+  let cartId: null | string = null
   try {
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
     })
+    cartId = cart.id
+
+    //+ delete all orders where isPaid is false, because customer can abandon the cart
+    await prisma.order.deleteMany({
+      where: {
+        clerkId: user.id,
+        isPaid: false,
+      },
+    })
+
     const order = await prisma.order.create({
       data: {
         clerkId: user.id,
@@ -605,17 +617,13 @@ export const createOrderAction = async (prevState: any, formData: FormData) => {
         email: user.emailAddresses[0].emailAddress,
       },
     })
-
-    await prisma.cart.delete({
-      where: {
-        id: cart.id,
-      },
-    })
+    orderId = order.id
   } catch (error) {
     return renderError(error)
   }
-  redirect('/orders')
+  redirect(`/checkout?orderId=${orderId}&cartId=${cartId}`)
 }
+
 export const fetchUserOrders = async () => {
   const user = await getCurrentUser()
   const orders = await prisma.order.findMany({
