@@ -8,7 +8,7 @@ import TextAreaInput from '@/components/form/TextAreaInput'
 import { Button } from '@/components/ui/button'
 import { createReviewAction } from '@/utils/actions'
 
-//as this is a client compo, we use useUser hook to access the user id and image
+// as this is a client compo, we use useUser hook to access the user id and image
 import { useUser } from '@clerk/nextjs'
 
 //! Todo: Separate Leave review button from the review form

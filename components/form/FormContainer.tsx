@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import { useFormState } from 'react-dom'
@@ -20,13 +21,12 @@ function FormContainer({
 }) {
   const [state, formAction] = useFormState(action, initialState)
   const { toast } = useToast()
-  console.log('From COntainer')
+  console.log(initialState)
   useEffect(() => {
     if (state.message) {
-      console.log(state.message)
       toast({ description: state.message })
     }
-  }, [state, toast])
+  }, [state])
   return (
     <form
       className={classNames}
