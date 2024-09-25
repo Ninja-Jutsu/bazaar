@@ -14,7 +14,7 @@ model Product {
   company     String
   description String     @db.LongText
   featured    Boolean
-  image       String? // Make image optional
+  image       String
   price       Int
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt

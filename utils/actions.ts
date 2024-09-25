@@ -135,7 +135,9 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
         id: productId,
       },
     })
-    await deleteImage(product.image!)
+
+    await deleteImage(product.image)
+
     revalidatePath('/admin/products')
 
     return { message: 'product removed' }
