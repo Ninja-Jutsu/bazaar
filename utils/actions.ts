@@ -548,3 +548,29 @@ export const updateCartItemAction = async ({
     return renderError(error)
   }
 }
+
+export const removeCartItemAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  const user = await getCurrentUser()
+  try {
+    const cartItemId = formData.get('id') as string
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    })
+    await prisma.cartItem.delete({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+    })
+
+    await updateCart(cart)
+    revalidatePath('/cart')
+    return { message: 'Item removed from cart' }
+  } catch (error) {
+    return renderError(error)
+  }
+}
