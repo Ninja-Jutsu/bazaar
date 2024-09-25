@@ -388,6 +388,8 @@ const fetchProduct = async (productId: string) => {
   }
   return product
 }
+
+// As I am going to use this in several actions:
 const includeProductClause = {
   cartItems: {
     include: {
@@ -396,6 +398,7 @@ const includeProductClause = {
   },
 }
 
+// Create Cart if doesn't exist. Or fetch it if it does
 export const fetchOrCreateCart = async ({
   userId,
   errorOnFailure = false,
@@ -466,6 +469,9 @@ export const updateCart = async (cart: Cart) => {
     include: {
       product: true, // Include the related product
     },
+    orderBy: {
+      createdAt: 'asc',
+    },
   })
 
   let numItemsInCart = 0
@@ -479,7 +485,7 @@ export const updateCart = async (cart: Cart) => {
   const shipping = cartTotal ? cart.shipping : 0
   const orderTotal = cartTotal + tax + shipping
 
-  await prisma.cart.update({
+  const currentCart = await prisma.cart.update({
     where: {
       id: cart.id,
     },
@@ -489,7 +495,9 @@ export const updateCart = async (cart: Cart) => {
       tax,
       orderTotal,
     },
+    include: includeProductClause,
   })
+  return { currentCart, cartItems }
 }
 
 export const addToCartAction = async (prevState: any, formData: FormData) => {
@@ -497,7 +505,10 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
   try {
     const productId = formData.get('productId') as string
     const amount = Number(formData.get('amount'))
+
+    // Check if the product exists
     await fetchProduct(productId)
+
     const cart = await fetchOrCreateCart({ userId: user.id })
     await updateOrCreateCartItem({ productId, cartId: cart.id, amount })
     await updateCart(cart)
@@ -505,4 +516,35 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
     return renderError(error)
   }
   redirect('/cart')
+}
+
+export const updateCartItemAction = async ({
+  amount,
+  cartItemId,
+}: {
+  amount: number
+  cartItemId: string
+}) => {
+  const user = await getCurrentUser()
+
+  try {
+    const cart = await fetchOrCreateCart({
+      userId: user.id,
+      errorOnFailure: true,
+    })
+    await prisma.cartItem.update({
+      where: {
+        id: cartItemId,
+        cartId: cart.id,
+      },
+      data: {
+        amount,
+      },
+    })
+    await updateCart(cart)
+    revalidatePath('/cart')
+    return { message: 'cart updated' }
+  } catch (error) {
+    return renderError(error)
+  }
 }
