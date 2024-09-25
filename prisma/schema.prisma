@@ -12,7 +12,7 @@ model Product {
   id          String     @id @default(uuid())
   name        String
   company     String
-  description String? // Make description optional
+  description String     @db.LongText
   featured    Boolean
   image       String? // Make image optional
   price       Int

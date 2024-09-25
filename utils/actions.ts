@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 import prisma from '@/prisma/prismaClient'
-import { Cart } from '@prisma/client'
+import { Cart, Prisma } from '@prisma/client'
 import delay from 'delay'
 import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
@@ -45,12 +45,23 @@ export const fetchFeaturedProducts = async () => {
   return products
 }
 
-export const fetchAllProducts = ({ search = '' }: { search: string }) => {
+export const fetchAllProducts = async ({ search = '' }: { search: string }) => {
+  // Convert the search term to lowercase to leverage MySQL's default case-insensitive behavior
+  const lowerCaseSearch = search.toLowerCase()
+
   return prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: search, mode: 'insensitive' } },
-        { company: { contains: search, mode: 'insensitive' } },
+        {
+          name: {
+            contains: lowerCaseSearch,
+          },
+        },
+        {
+          company: {
+            contains: lowerCaseSearch,
+          },
+        },
       ],
     },
     orderBy: {
@@ -92,6 +103,7 @@ export const createProductAction = async (
       },
     })
     revalidatePath('/', 'layout')
+    console.log(validatedFields)
     return { message: 'product created' }
   } catch (error) {
     return renderError(error)
@@ -123,7 +135,7 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
         id: productId,
       },
     })
-    await deleteImage(product.image)
+    await deleteImage(product.image!)
     revalidatePath('/admin/products')
 
     return { message: 'product removed' }
@@ -478,9 +490,9 @@ export const updateCart = async (cart: Cart) => {
     numItemsInCart += item.amount
     cartTotal += item.amount * item.product.price
   }
-  const tax = cart.taxRate * cartTotal
+  const tax = cart.taxRate.times(cartTotal)
   const shipping = cartTotal ? cart.shipping : 0
-  const orderTotal = cartTotal + tax + shipping
+  const orderTotal = new Prisma.Decimal(cartTotal).plus(tax).plus(shipping)
 
   const currentCart = await prisma.cart.update({
     where: {
