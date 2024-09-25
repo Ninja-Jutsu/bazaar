@@ -11,14 +11,16 @@ import { createReviewAction } from '@/utils/actions'
 //as this is a client compo, we use useUser hook to access the user id and image
 import { useUser } from '@clerk/nextjs'
 
+//! Todo: Separate Leave review button from the review form
+
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false)
   const { user } = useUser()
   return (
-    <div>
+    <div className='flex'>
       <Button
         size='lg'
-        className='capitalize'
+        className='capitalize self-end'
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
         leave review
