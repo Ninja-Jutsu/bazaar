@@ -2,18 +2,24 @@ import FavoriteToggleButton from '@/components/products/FavoriteToggleButton'
 import AddToCart from '@/components/single-product/AddToCart'
 import BreadCrumbs from '@/components/single-product/BreadCrumbs'
 import ProductRating from '@/components/single-product/ProductRating'
-import { fetchSingleProduct } from '@/utils/actions'
+import { fetchSingleProduct, findExistingReview } from '@/utils/actions'
 import { formatCurrency } from '@/utils/format'
 import Image from 'next/image'
 import ShareButton from '@/components/single-product/ShareButton'
-
+import { auth } from '@clerk/nextjs/server'
 import SubmitReview from '@/components/reviews/SubmitReview'
 import ProductReviews from '@/components/reviews/ProductReviews'
 
 async function SingleProductPage({ params }: { params: { id: string } }) {
   const product = await fetchSingleProduct(params.id)
   const { name, image, company, description, price } = product
+  // Restrict Access
+  const { userId } = auth()
+  const reviewDoesNotExist =
+    userId && !(await findExistingReview(userId, product.id))
+
   const dollarsAmount = formatCurrency(price)
+
   return (
     <section>
       <BreadCrumbs name={product.name} />
@@ -70,7 +76,8 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className='mt-10'>
-        {/* <ProductReviews productId={params.id} /> */}
+        <ProductReviews productId={params.id} />
+        {reviewDoesNotExist && <SubmitReview productId={params.id} />}
         <SubmitReview productId={params.id} />
       </div>
     </section>
