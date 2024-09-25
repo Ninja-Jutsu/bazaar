@@ -22,32 +22,44 @@ async function ProductsContainer({
     <>
       {/* HEADER */}
       <section>
-        <div className='flex justify-between items-center my-4'>
-          <h4 className='font-medium text-lg lg:text-2xl'>
-            {totalProducts} product{totalProducts > 1 && 's'}
+        <div className='flex justify-between items-center my-4 gap-4'>
+          <h4 className='font-medium text-lg lg:text-2xl text-nowrap'>
+            {totalProducts} product{totalProducts > 1 && 's'} found
           </h4>
-          <Suspense>
-            <NavSearch />
-          </Suspense>
-          <div className='flex gap-x-4'>
-            <Button
-              variant={layout === 'grid' ? 'default' : 'ghost'}
-              size='icon'
-              asChild
+          <div className='hidden md:block'>
+            <Suspense>
+              <NavSearch />
+            </Suspense>
+          </div>
+          <div className='flex gap-4'>
+            <div className='md:hidden'>
+              <Suspense>
+                <NavSearch />
+              </Suspense>
+            </div>
+            <div
+              id='buttons'
+              className='hidden md:flex gap-4'
             >
-              <Link href={`/products?layout=grid${searchTerm}`}>
-                <LuLayoutGrid />
-              </Link>
-            </Button>
-            <Button
-              variant={layout === 'list' ? 'default' : 'ghost'}
-              size='icon'
-              asChild
-            >
-              <Link href={`/products?layout=list${searchTerm}`}>
-                <LuList />
-              </Link>
-            </Button>
+              <Button
+                variant={layout === 'grid' ? 'default' : 'ghost'}
+                size='icon'
+                asChild
+              >
+                <Link href={`/products?layout=grid${searchTerm}`}>
+                  <LuLayoutGrid />
+                </Link>
+              </Button>
+              <Button
+                variant={layout === 'list' ? 'default' : 'ghost'}
+                size='icon'
+                asChild
+              >
+                <Link href={`/products?layout=list${searchTerm}`}>
+                  <LuList />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
         <Separator className='mt-4' />

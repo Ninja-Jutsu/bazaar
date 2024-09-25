@@ -4,15 +4,12 @@ import { SiPrestashop } from 'react-icons/si'
 
 function Logo() {
   return (
-    <Button
-      size='icon'
-      variant='ghost'
-      asChild
+    <Link
+      href='/'
+      className='transition-all duration-1500 animate-pulse'
     >
-      <Link href='/'>
-        <SiPrestashop className='w-20 h-20' />
-      </Link>
-    </Button>
+      <SiPrestashop className='w-12 h-12' />
+    </Link>
   )
 }
 

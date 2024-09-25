@@ -7,7 +7,11 @@ function Hero() {
     <section className='grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mt-10'>
       <div>
         <h1 className='max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl'>
-          Shop the latest trends and timeless classics at Bazaar.
+          Shop the latest trends and timeless classics at{' '}
+          <span className='italic text-cyan-200 animate-pulse duration-1500'>
+            Bazaar
+          </span>
+          .
         </h1>
         <p className='mt-8 max-w-xl text-lg leading-8 text-muted-foreground'>
           A curated marketplace offering a diverse and eclectic collection of
@@ -18,7 +22,7 @@ function Hero() {
         <Button
           asChild
           size='lg'
-          className='mt-10'
+          className='mt-5'
         >
           <Link href='/products'>Our Products</Link>
         </Button>

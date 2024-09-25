@@ -9,7 +9,7 @@ async function UserIcon() {
       <img
         src={profileImage}
         alt='user profile image'
-        className='w-6 h-6 rounded-full object-cover'
+        className='w-full h-full min-w-8 min-h-8 rounded-full object-cover'
       />
     )
   return <LuUser2 className='w-6 h-6 bg-primary rounded-full text-white' />
