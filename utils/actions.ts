@@ -94,7 +94,6 @@ export const createProductAction = async (
     revalidatePath('/', 'layout')
     return { message: 'product created' }
   } catch (error) {
-    console.log(error)
     return renderError(error)
   }
 
@@ -153,7 +152,6 @@ export const updateProductAction = async (
     const productId = formData.get('id') as string
     const rawData = Object.fromEntries(formData)
     const validatedFields = validateWithZodSchema(productSchema, rawData)
-    console.log(validatedFields)
     await prisma.product.update({
       where: {
         id: productId,
@@ -382,7 +380,6 @@ const fetchProduct = async (productId: string) => {
       id: productId,
     },
   })
-  console.log('fetchProduct')
   if (!product) {
     throw new Error('Product not found')
   }
@@ -412,15 +409,12 @@ export const fetchOrCreateCart = async ({
     },
     include: includeProductClause,
   })
-  console.log('fetchOrCreateCart')
 
   if (!cart && errorOnFailure) {
-    console.log('fetchOrCreateCart')
     throw new Error('Cart not found')
   }
 
   if (!cart) {
-    console.log('fetchOrCreateCart')
     cart = await prisma.cart.create({
       data: {
         clerkId: userId,
@@ -449,7 +443,6 @@ const updateOrCreateCartItem = async ({
   })
 
   if (cartItem) {
-    console.log('updateOrCreateCartItem')
     cartItem = await prisma.cartItem.update({
       where: {
         id: cartItem.id,
@@ -459,7 +452,6 @@ const updateOrCreateCartItem = async ({
       },
     })
   } else {
-    console.log('updateOrCreateCartItem')
     cartItem = await prisma.cartItem.create({
       data: { amount, productId, cartId },
     })
@@ -502,8 +494,7 @@ export const updateCart = async (cart: Cart) => {
     },
     include: includeProductClause,
   })
-  console.log('updateCart')
-  // return { currentCart, cartItems }
+  return { message: 'Cart updated' }
 }
 
 export const addToCartAction = async (prevState: any, formData: FormData) => {
@@ -515,6 +506,9 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
     const cart = await fetchOrCreateCart({ userId: user.id })
     await updateOrCreateCartItem({ productId, cartId: cart.id, amount })
     await updateCart(cart)
+    return {
+      message: 'ADDED',
+    }
   } catch (error) {
     return renderError(error)
   }
