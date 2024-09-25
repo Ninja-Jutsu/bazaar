@@ -13,20 +13,20 @@ function CartTotals({ cart }: { cart: Cart }) {
       <Card className='p-8 '>
         <CartTotalRow
           label='Subtotal'
-          amount={cartTotal}
+          amount={Number(cartTotal)}
         />
         <CartTotalRow
           label='Shipping'
-          amount={shipping}
+          amount={Number(shipping)}
         />
         <CartTotalRow
           label='Tax'
-          amount={tax}
+          amount={Number(tax)}
         />
         <CardTitle className='mt-8'>
           <CartTotalRow
             label='Order Total'
-            amount={orderTotal}
+            amount={Number(orderTotal)}
             lastRow
           />
         </CardTitle>
