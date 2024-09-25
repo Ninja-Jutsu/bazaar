@@ -1,3 +1,4 @@
+'use client'
 import { Card } from '@/components/ui/card'
 import { FirstColumn, SecondColumn } from './CartItemColumns'
 import ThirdColumn from './ThirdColumn'
