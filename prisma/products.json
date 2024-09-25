@@ -4,7 +4,7 @@
     "company": "Modenza",
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     "featured": true,
-    "image": "https://images.pexels.com/photos/943150/pexels-photo-943150.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "image": "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "price": 100,
     "clerkId": "clerkId"
   },
@@ -13,7 +13,7 @@
     "company": "Luxora",
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     "featured": true,
-    "image": "https://images.pexels.com/photos/5705090/pexels-photo-5705090.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "image": "https://images.pexels.com/photos/1395947/pexels-photo-1395947.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "price": 200,
     "clerkId": "clerkId"
   },
@@ -22,7 +22,7 @@
     "company": "Homestead",
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     "featured": true,
-    "image": "https://images.pexels.com/photos/1034584/pexels-photo-1034584.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "image": "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "price": 300,
     "clerkId": "clerkId"
   },
@@ -31,8 +31,224 @@
     "company": "Comfora",
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     "featured": false,
-    "image": "https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "image": "https://images.pexels.com/photos/3757055/pexels-photo-3757055.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "price": 400,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "rustic coffee table",
+    "company": "Timberland",
+    "description": "Handcrafted from reclaimed wood, this coffee table adds a touch of warmth and character to any living room.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/1464651/pexels-photo-1464651.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 250,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "modern bookshelf",
+    "company": "Minimalist Designs",
+    "description": "Sleek and functional, this bookshelf is perfect for displaying your favorite books and decorative items.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/358514/pexels-photo-358514.jpeg",
+    "price": 180,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "elegant dining table",
+    "company": "Dine & Style",
+    "description": "Gather around this beautiful dining table for unforgettable meals with family and friends.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/1391312/pexels-photo-1391312.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 550,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "plush armchair",
+    "company": "Comfort Haven",
+    "description": "Sink into the luxurious comfort of this armchair and unwind after a long day.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/4352247/pexels-photo-4352247.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 320,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "industrial pendant light",
+    "company": "Urban Loft",
+    "description": "Add a touch of industrial chic to your space with this stylish pendant light.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/5309983/pexels-photo-5309983.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 120,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "bohemian rug",
+    "company": "Wanderlust Decor",
+    "description": "Bring a free-spirited vibe to your home with this colorful and textured rug.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/6916/rub-rug-fabric-red.jpg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 190,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "minimalist desk",
+    "company": "Focus & Flow",
+    "description": "Stay organized and productive with this clean and clutter-free desk.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/938967/pexels-photo-938967.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 280,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "vintage record player",
+    "company": "Vinyl Vibes",
+    "description": "Rediscover the joy of vinyl with this classic record player.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/752843/pexels-photo-752843.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 350,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "outdoor hammock",
+    "company": "Relax & Recharge",
+    "description": "Escape to your own backyard oasis with this comfortable and durable hammock.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/214574/pexels-photo-214574.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 80,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "smart speaker",
+    "company": "Voice Assistant",
+    "description": "Control your smart home and enjoy your favorite music with this voice-activated speaker.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 150,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "wireless headphones",
+    "company": "SoundWave",
+    "description": "Experience immersive audio with these comfortable and noise-canceling headphones.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/1546203/pexels-photo-1546203.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 220,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "4K television",
+    "company": "CineView",
+    "description": "Enjoy stunning visuals and crystal-clear sound with this high-resolution television.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 800,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "gaming laptop",
+    "company": "GameOn",
+    "description": "Unleash your gaming potential with this powerful and portable laptop.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/3178866/pexels-photo-3178866.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 1200,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "fitness tracker",
+    "company": "FitLife",
+    "description": "Track your steps, heart rate, and sleep patterns with this stylish fitness tracker.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/396133/pexels-photo-396133.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 70,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "digital camera",
+    "company": "CaptureLife",
+    "description": "Capture life's precious moments in stunning detail with this high-quality digital camera.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 450,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "coffee maker",
+    "company": "Brew & Bliss",
+    "description": "Start your day right with a perfectly brewed cup of coffee from this sleek coffee maker.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 90,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "air fryer",
+    "company": "HealthyCook",
+    "description": "Enjoy crispy and delicious food with less oil using this versatile air fryer.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/326279/pexels-photo-326279.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 130,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "standing desk converter",
+    "company": "WorkWell",
+    "description": "Transform your workspace and improve your posture with this adjustable standing desk converter.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 100,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "bluetooth keyboard",
+    "company": "Type & Connect",
+    "description": "Enhance your productivity with this wireless and compact keyboard.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/52607/pexels-photo-52607.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 60,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "portable charger",
+    "company": "PowerUp",
+    "description": "Stay connected on the go with this high-capacity portable charger.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/26567/pexels-photo-26567.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 40,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "smartwatch",
+    "company": "TimeTech",
+    "description": "Track your fitness, receive notifications, and stay connected with this stylish smartwatch.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 200,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "drone",
+    "company": "FlyHigh",
+    "description": "Capture breathtaking aerial footage with this easy-to-fly drone.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/3050910/pexels-photo-3050910.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 300,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "electric kettle",
+    "company": "QuickBrew",
+    "description": "Boil water quickly and efficiently with this stylish electric kettle.",
+    "featured": true,
+    "image": "https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 30,
+    "clerkId": "clerkId"
+  },
+  {
+    "name": "yoga mat",
+    "company": "Zen & Flex",
+    "description": "Find your inner peace and improve your flexibility with this eco-friendly yoga mat.",
+    "featured": false,
+    "image": "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "price": 25,
     "clerkId": "clerkId"
   }
 ]

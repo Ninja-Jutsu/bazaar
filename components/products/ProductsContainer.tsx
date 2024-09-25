@@ -1,10 +1,12 @@
-import ProductsGrid from './ProductsGrid'
-import ProductsList from './ProductsList'
-import { LuLayoutGrid, LuList } from 'react-icons/lu'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import Link from 'next/link'
 import { fetchAllProducts } from '@/utils/actions'
+import Link from 'next/link'
+import { Suspense } from 'react'
+import { LuLayoutGrid, LuList } from 'react-icons/lu'
+import NavSearch from '../navbar/NavSearch'
+import ProductsGrid from './ProductsGrid'
+import ProductsList from './ProductsList'
 
 async function ProductsContainer({
   layout,
@@ -24,6 +26,9 @@ async function ProductsContainer({
           <h4 className='font-medium text-lg lg:text-2xl'>
             {totalProducts} product{totalProducts > 1 && 's'}
           </h4>
+          <Suspense>
+            <NavSearch />
+          </Suspense>
           <div className='flex gap-x-4'>
             <Button
               variant={layout === 'grid' ? 'default' : 'ghost'}
