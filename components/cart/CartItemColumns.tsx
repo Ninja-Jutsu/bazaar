@@ -27,21 +27,21 @@ export const SecondColumn = ({
   name,
   company,
   productId,
+  price,
 }: {
   name: string
   company: string
   productId: string
+  price: number
 }) => {
   return (
-    <div className=' sm:w-48'>
+    <div className='sm:w-48 flex flex-col gap-2'>
       <Link href={`/products/${productId}`}>
         <h3 className='capitalize font-medium hover:underline'>{name}</h3>
       </Link>
       <h4 className='mt-2 capitalize text-xs'>{company}</h4>
+      <p className='font-bold mt-4 text-green-400'>{formatCurrency(price)}</p>
     </div>
   )
 }
 
-export const FourthColumn = ({ price }: { price: number }) => {
-  return <p className='font-medium md:ml-auto'>{formatCurrency(price)}</p>
-}

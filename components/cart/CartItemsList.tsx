@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card'
-import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColumns'
+import { FirstColumn, SecondColumn } from './CartItemColumns'
 import ThirdColumn from './ThirdColumn'
 import { CartItemWithProduct } from '@/utils/types'
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
@@ -21,12 +21,14 @@ function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
               name={name}
               company={company}
               productId={productId}
+              price={price}
             />
-            <ThirdColumn
-              id={id}
-              quantity={amount}
-            />
-            <FourthColumn price={price} />
+            <div className='ml-auto'>
+              <ThirdColumn
+                id={id}
+                quantity={amount}
+              />
+            </div>
           </Card>
         )
       })}

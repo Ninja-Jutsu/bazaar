@@ -32,6 +32,7 @@ export function SubmitButton({
       disabled={pending}
       className={cn('capitalize', className)}
       size={size}
+      variant={text === 'remove' ? 'destructive' : 'default'}
     >
       {pending ? (
         <>

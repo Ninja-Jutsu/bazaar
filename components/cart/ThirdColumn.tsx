@@ -14,6 +14,7 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
 
   const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
+
   const handleAmountChange = async (value: number) => {
     setIsLoading(true)
     toast({ description: 'Calculating...' })
@@ -27,14 +28,17 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
   }
 
   return (
-    <div className='md:ml-8'>
+    <div className='md:ml-8 flex flex-col h-full justify-between'>
       <SelectProductAmount
         amount={amount}
         setAmount={handleAmountChange}
         mode={Mode.CartItem}
         isLoading={isLoading}
       />
-      <FormContainer action={removeCartItemAction}>
+      <FormContainer
+        action={removeCartItemAction}
+        classNames='self-end'
+      >
         <input
           type='hidden'
           name='id'
