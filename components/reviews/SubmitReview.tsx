@@ -7,20 +7,15 @@ import RatingInput from '@/components/reviews/RatingInput'
 import TextAreaInput from '@/components/form/TextAreaInput'
 import { Button } from '@/components/ui/button'
 import { createReviewAction } from '@/utils/actions'
-
-// as this is a client compo, we use useUser hook to access the user id and image
 import { useUser } from '@clerk/nextjs'
-
-//! Todo: Separate Leave review button from the review form
-
 function SubmitReview({ productId }: { productId: string }) {
   const [isReviewFormVisible, setIsReviewFormVisible] = useState(false)
   const { user } = useUser()
   return (
-    <div className='flex'>
+    <div className='mt-5'>
       <Button
         size='lg'
-        className='capitalize self-end'
+        className='capitalize'
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
         leave review
@@ -36,12 +31,12 @@ function SubmitReview({ productId }: { productId: string }) {
             <input
               type='hidden'
               name='authorName'
-              value={user?.firstName || 'user'} // in case user didn't set up a firstName
+              value={user?.firstName || 'user'}
             />
             <input
               type='hidden'
               name='authorImageUrl'
-              value={user?.imageUrl || ''} // in case user doesn't have an image (clerk provides one)
+              value={user?.imageUrl || ''}
             />
             <RatingInput name='rating' />
             <TextAreaInput

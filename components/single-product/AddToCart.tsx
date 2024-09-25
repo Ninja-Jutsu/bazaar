@@ -12,7 +12,7 @@ function AddToCart({ productId }: { productId: string }) {
   const [amount, setAmount] = useState(1)
   const { userId } = useAuth()
   return (
-    <div className='mt-4'>
+    <div className='mt-4 flex flex-col'>
       <SelectProductAmount
         mode={Mode.SingleProduct}
         amount={amount}
