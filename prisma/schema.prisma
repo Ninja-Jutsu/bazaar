@@ -1,26 +1,19 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "mysql" // Switch the provider to "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Product {
   id          String     @id @default(uuid())
   name        String
   company     String
-  description String
+  description String? // Make description optional
   featured    Boolean
-  image       String
+  image       String? // Make image optional
   price       Int
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -43,9 +36,9 @@ model Review {
   id             String   @id @default(uuid())
   clerkId        String
   rating         Int
-  comment        String
+  comment        String? // Make comment optional
   authorName     String
-  authorImageUrl String
+  authorImageUrl String? // Make authorImageUrl optional
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   product        Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
@@ -57,11 +50,11 @@ model Cart {
   clerkId        String
   cartItems      CartItem[]
   numItemsInCart Int        @default(0)
-  cartTotal      Int        @default(0)
-  shipping       Int        @default(5)
-  tax            Int        @default(0)
-  taxRate        Float      @default(0.1)
-  orderTotal     Int        @default(0)
+  cartTotal      Decimal    @default(0) // Use Decimal for precise calculations
+  shipping       Decimal    @default(5) // Use Decimal for shipping costs
+  tax            Decimal    @default(0)
+  taxRate        Decimal    @default(0.1)
+  orderTotal     Decimal    @default(0)
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
@@ -81,9 +74,9 @@ model Order {
   id         String   @id @default(uuid())
   clerkId    String
   products   Int      @default(0)
-  orderTotal Int      @default(0)
-  tax        Int      @default(0)
-  shipping   Int      @default(0)
+  orderTotal Decimal  @default(0) // Use Decimal for order totals
+  tax        Decimal  @default(0)
+  shipping   Decimal  @default(0)
   email      String
   isPaid     Boolean  @default(true)
   createdAt  DateTime @default(now())
