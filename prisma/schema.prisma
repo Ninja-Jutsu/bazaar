@@ -37,9 +37,9 @@ model Review {
   id             String   @id @default(uuid())
   clerkId        String
   rating         Int
-  comment        String? // Make comment optional
+  comment        String
   authorName     String
-  authorImageUrl String? // Make authorImageUrl optional
+  authorImageUrl String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   product        Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
