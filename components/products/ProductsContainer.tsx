@@ -20,8 +20,8 @@ async function ProductsContainer({
     <>
       {/* HEADER */}
       <section>
-        <div className='flex justify-between items-center'>
-          <h4 className='font-medium text-lg'>
+        <div className='flex justify-between items-center my-4'>
+          <h4 className='font-medium text-lg lg:text-2xl'>
             {totalProducts} product{totalProducts > 1 && 's'}
           </h4>
           <div className='flex gap-x-4'>
