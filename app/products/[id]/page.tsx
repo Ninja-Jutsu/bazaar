@@ -13,7 +13,7 @@ import ProductReviews from '@/components/reviews/ProductReviews'
 async function SingleProductPage({ params }: { params: { id: string } }) {
   const product = await fetchSingleProduct(params.id)
   const { name, image, company, description, price } = product
-  // Restrict Access
+  // Restrict Access. If user already submitted a review
   const { userId } = auth()
   const reviewDoesNotExist =
     userId && !(await findExistingReview(userId, product.id))
@@ -78,7 +78,7 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
       <div className='mt-10'>
         <ProductReviews productId={params.id} />
         {reviewDoesNotExist && <SubmitReview productId={params.id} />}
-        <SubmitReview productId={params.id} />
+        {userId && <SubmitReview productId={params.id} />}
       </div>
     </section>
   )
