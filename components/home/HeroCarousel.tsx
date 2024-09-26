@@ -32,8 +32,8 @@ async function HeroCarousel() {
                       <Image
                         src={image}
                         alt='hero'
-                        width={200}
-                        height={200}
+                        width={500}
+                        height={500}
                         className='w-full h-[24rem] rounded-md object-cover'
                         priority
                       />
