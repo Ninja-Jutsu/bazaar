@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use server'
 import prisma from '@/prisma/prismaClient'
-import { Cart, Prisma } from '@prisma/client'
-import delay from 'delay'
-import { redirect } from 'next/navigation'
 import { auth, currentUser } from '@clerk/nextjs/server'
+import { Cart, Prisma } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
 import {
   imageSchema,
   productSchema,
