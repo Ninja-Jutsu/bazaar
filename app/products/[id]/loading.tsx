@@ -18,6 +18,7 @@ export default function LoadingSingleProductPage() {
       <div className='mt-6 grid gap-y-4 lg:grid-cols-2 lg:gap-x-8'>
         <div className='h-full mt-6 grid gap-y-4 lg:grid-cols-2 lg:gap-x-8'>
           <Skeleton className='hidden md:block h-[400px] w-[450px] ' />
+          <Skeleton className=' md:hidden h-[50vw] w-[100%] m-auto' />
         </div>
         <div className='w-full'>
           <div className='flex gap-x-8 items-center'>
@@ -51,6 +52,7 @@ export default function LoadingSingleProductPage() {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Exercitationem provident{' '}
           </p>
+          <Skeleton className='w-[250px] h-[36px] mb-5' />
           <Button size='lg'>Add to cart</Button>
         </div>
       </div>

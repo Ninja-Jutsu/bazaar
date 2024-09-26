@@ -71,6 +71,7 @@ export const fetchAllProducts = async ({ search = '' }: { search: string }) => {
 }
 
 export const fetchSingleProduct = async (productId: string) => {
+  await delay(5000)
   const product = await prisma.product.findUnique({
     where: {
       id: productId,
