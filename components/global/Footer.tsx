@@ -40,7 +40,7 @@ const links: Links[] = [
     label: 'Social Media',
   },
   {
-    label: 'About Bazaar',
+    label: 'About',
   },
   {
     label: 'Resources',
@@ -133,9 +133,9 @@ export default function Footer() {
                     <TableCell>
                       <Link
                         href='/about'
-                        className='capitalize hover:underline'
+                        className='capitalize hover:underline text-start'
                       >
-                        Who we are
+                        Bazaar
                       </Link>
                     </TableCell>
                     <TableCell>
@@ -144,7 +144,7 @@ export default function Footer() {
                           href='/terms'
                           className='capitalize hover:underline'
                         >
-                          Terms of Service
+                          Terms
                         </Link>
                       </div>
                     </TableCell>
@@ -155,7 +155,7 @@ export default function Footer() {
                       >
                         Email Us
                       </Link>
-                      <p>Phone: +65 8951 7611</p>
+                      <p>+65 8951 7611</p>
                     </TableCell>
                   </TableRow>
                 </TableBody>
