@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bazaar: Your Modern Online Marketplace
 
-## Getting Started
+**Overview**
 
-First, run the development server:
+Bazaar is a feature-rich e-commerce application built with Next.js, providing a seamless shopping experience for users. It offers essential functionalities like user authentication, product creation, order placement, secure payments, and order tracking. The application is fully responsive, ensuring optimal performance across various devices.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Key Features**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Secure Authentication:** Leverages Clerk for robust user authentication and management.
+- **Product Management:** Enables administrators to create and manage product listings efficiently.
+- **Seamless Ordering:** Provides a user-friendly interface for browsing products and placing orders.
+- **Secure Payments:** Integrates with Stripe to enable secure and convenient online payments.
+- **Order Tracking:** Allows users to track the status and delivery of their orders.
+- **Responsive Design:** Adapts seamlessly to different screen sizes and devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Tech Stack**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend:**
 
-## Learn More
+  - Next.js
+  - React
+  - Radix UI
+  - Tailwind CSS
+  - Lucide React (icons)
+  - class-variance-authority (for styling)
+  - tailwind-merge & tailwindcss-animate (styling utilities)
 
-To learn more about Next.js, take a look at the following resources:
+- **Backend:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - Next.js API Routes/Serverless Functions
+  - Prisma (ORM)
+  - Supabase (Bucket)
+  - PlanetScale MySQL database
+  - Stripe (payment processing)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Other:**
 
-## Deploy on Vercel
+  - Clerk (authentication)
+  - Axios (HTTP requests)
+  - Zod (schema validation)
+  - use-debounce (debouncing for input fields)
+  - react-share (social sharing)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Getting Started**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository:** `git clone https://github.com/Ninja-Jutsu/bazaar.git`
+2. **Install dependencies:** `npm install` or `yarn install`
+3. **Set up environment variables:**
+   - Create a `.env.local` file and configure the required environment variables (database connection, Supabase keys, Stripe keys, Clerk credentials, etc.).
+4. **Run the development server:** `npm run dev` or `yarn dev`
+5. **Open in your browser:** `http://localhost:3000`
+
+**Contributing**
+
+Contributions are welcome! Please read the CONTRIBUTING.md file for guidelines on how to contribute to the project.
+
+**License**
+
+This project is licensed under the MIT License.
+
+**Contact**
+
+For any questions or inquiries, please contact [ninja.jutsu.way@gmail.com].
