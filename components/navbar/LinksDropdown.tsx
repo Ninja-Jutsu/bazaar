@@ -24,12 +24,12 @@ function LinksDropdown() {
           variant='outline'
           className='md:flex md:gap-4 md:max-w-[100px] w-12 h-12'
         >
-          <LuAlignLeft className='w-6 h-6 hidden md:block' />
+          {/* <LuAlignLeft className='w-6 h-6 hidden sm:block mr-5 dark:text-white'/> */}
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className='w-48'
+        className='w-40 mr-5'
         align='start'
         sideOffset={10}
       >

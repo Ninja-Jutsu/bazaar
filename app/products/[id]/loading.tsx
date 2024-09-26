@@ -1,11 +1,8 @@
 'use client'
-import React from 'react'
 import SectionTitle from '@/components/global/SectionTitle'
-import { Separator } from '@/components/ui/separator'
-import { Skeleton } from '@/components/ui/skeleton'
-import BreadCrumbs from '@/components/single-product/BreadCrumbs'
-import { Redacted_Script } from 'next/font/google'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+import { Redacted_Script } from 'next/font/google'
 import { FaStar } from 'react-icons/fa'
 const redacted = Redacted_Script({ subsets: ['latin'], weight: ['400'] })
 

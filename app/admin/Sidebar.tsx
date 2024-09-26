@@ -8,7 +8,7 @@ function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside>
+    <aside className='flex justify-around md:block md:border-r pr-4'>
       {adminLinks.map((link) => {
         const isActivePage = pathname === link.href
         const variant = isActivePage ? 'default' : 'ghost'
@@ -16,7 +16,7 @@ function Sidebar() {
           <Button
             key={link.label}
             asChild
-            className='w-full mb-2 capitalize font-normal justify-start'
+            className='md:w-full mb-2 capitalize font-normal justify-start'
             variant={variant}
           >
             <Link
