@@ -53,7 +53,7 @@ const links: Links[] = [
 
 export default function Footer() {
   return (
-    <div className='w-full flex justify-center items-center mb-10'>
+    <div className='w-full flex justify-center items-center m-auto mb-5'>
       <Drawer>
         <DrawerTrigger asChild>
           <Button

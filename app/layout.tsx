@@ -35,7 +35,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <Container className='pb-20'>{children}</Container>
+          <Container className='pb-10'>{children}</Container>
           <Footer />
         </Providers>
       </body>
