@@ -9,6 +9,20 @@ import { auth } from '@clerk/nextjs/server'
 import ProductReviews from '@/components/reviews/ProductReviews'
 import SubmitReview from '@/components/reviews/SubmitReview'
 import ShareButton from '@/components/single-product/ShareButton'
+import type { Metadata, ResolvingMetadata } from 'next'
+
+type Props = {
+  params: { id: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const product = await fetchSingleProduct(params.id)
+  return {
+    title: product.name,
+    description: product.description,
+  }
+}
+
 async function SingleProductPage({ params }: { params: { id: string } }) {
   const product = await fetchSingleProduct(params.id)
   const { name, image, company, description, price } = product

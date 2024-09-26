@@ -19,7 +19,7 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Next Bazaar',
+  title: 'Modern Bazaar',
   description: 'A nifty bazaar built with Next.js',
 }
 

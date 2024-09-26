@@ -104,7 +104,7 @@ export default function Footer() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow className='text-xs sm:text-l'>
+                  <TableRow className='text-xs sm:text-l md:text-xl'>
                     <TableCell className='hidden sm:block mt-2'>
                       <Link
                         href='https://maps.app.goo.gl/XVPiq67GzhUXKds77'
@@ -153,7 +153,7 @@ export default function Footer() {
                         href={`mailto:ninja.jutsu.way@gmail.com`}
                         className='hover:underline'
                       >
-                        Email Us
+                        ninja.jutsu.way@gmail.com
                       </Link>
                       <p>+65 8951 7611</p>
                     </TableCell>

@@ -1,5 +1,12 @@
 import SectionTitle from '@/components/global/SectionTitle'
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Bazaar',
+  description: 'Your Marketplace, Your Way',
+}
+
 function AboutPage() {
   return (
     <section className='mt-5'>
@@ -65,7 +72,7 @@ const benefits: Benefits[] = [
   },
 ]
 
-function Paragraph({ text }: {text: string}) {
+function Paragraph({ text }: { text: string }) {
   return (
     <p className='mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground'>
       {text}
