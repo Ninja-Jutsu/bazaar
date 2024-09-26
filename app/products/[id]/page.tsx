@@ -21,12 +21,12 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
     <section>
       <BreadCrumbs name={product.name} />
       <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
-        <div className='relative md:hidden h-full'>
+        <div className='relative lg:hidden h-full'>
           <Image
             src={image}
             alt={name}
-            width={100}
-            height={100}
+            width={200}
+            height={200}
             priority
             className='w-full rounded-md object-cover'
           />

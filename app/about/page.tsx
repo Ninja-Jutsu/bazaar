@@ -2,10 +2,10 @@ import SectionTitle from '@/components/global/SectionTitle'
 
 function AboutPage() {
   return (
-    <section>
-      <h1 className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-4xl font-bold leading-none tracking-wide sm:text-6xl'>
+    <section className='mt-5'>
+      <h1 className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-3xl font-bold leading-none tracking-wide sm:text-6xl'>
         Welcome to Bazaar
-        <span className='bg-primary py-2 px-4 rounded-lg tracking-widest text-white dark:text-black'>
+        <span className='bg-primary py-2 px-4 text-center rounded-lg tracking-widest text-white dark:text-black'>
           Your Marketplace, Your Way
         </span>
       </h1>
